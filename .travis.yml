@@ -1,0 +1,13 @@
+#To get superuser level permissions
+sudo: required
+services:
+  -docker
+
+#Series of steps to run before our project runs
+before_install:
+  #Do tagging to use the image 
+  - docker build -t hritikchauhan/docker-react -f Dockerfile.dev .
+
+script:
+  #npm run test waits for the stdin and never exits automatically
+  - docker run hritikchauhan/docker-react npm run test -- --coverage
