@@ -10,4 +10,4 @@ before_install:
 
 script:
   #npm run test waits for the stdin and never exits automatically
-  - docker run hritikchauhan/docker-react npm run test -- --coverage
+  - docker run -e CI=true hritikchauhan/docker-react npm run test -- --coverage
