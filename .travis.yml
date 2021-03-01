@@ -11,3 +11,15 @@ before_install:
 script:
   #npm run test waits for the stdin and never exits automatically
   - docker run -e CI=true hritikchauhan/docker-react npm run test -- --coverage
+
+depoy:
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-719330962556"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
